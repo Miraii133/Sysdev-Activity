@@ -44,7 +44,15 @@ function getInputForSave(){
     for (let i = 0; i < userInfo.length; i++){
         userInfo[i] = prompt(); 
     }
+
+    // length starts at 1,
+    // array starts at 0 which is why
+    // -1 is needed.
     userArr.push(userInfo);
+    userInfo.unshift(userArr.length-1);
+    
+    console.log(userArr.length);
+    console.log(userInfo);
     console.log(userArr);
     getUserChoice();
 }
