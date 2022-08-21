@@ -9,7 +9,8 @@ function getUserChoice(){
     let userChoice = prompt();
 
     // Save
-    if (userChoice == 0){
+    // added q key as alternative for easy exit.
+    if (userChoice == 0 || userChoice == "q"){
         console.log(`Selected ${choiceNamesArr[userChoice]}.`);
         return;
     }
@@ -20,11 +21,15 @@ function getUserChoice(){
     }
 
     // Update
-    else if (userChoice == 2){
+    else if (
+        // fix error handler
+        userChoice == 2 && 
+        userArr.length != 0){
         console.log(`Selected ${choiceNamesArr[userChoice]}.`);
         getInputForUpdate();
     }
 
+    // Delete
     else if (userChoice == 3){
         console.log(`Selected ${choiceNamesArr[userChoice]}.`);
     }
@@ -32,8 +37,6 @@ function getUserChoice(){
         console.log("Error Input.");
         getUserChoice();
     }
-
-    // Delete
 
     return userChoice;
 }
@@ -45,25 +48,47 @@ function getInputForSave(){
         userInfo[i] = prompt(); 
     }
 
+    // inserts new userInfo to
+    // the end of the array.
+    userArr.push(userInfo);
+    // inserts ID in the beginning of the 
+    // userArray.
     // length starts at 1,
     // array starts at 0 which is why
     // -1 is needed.
-    userArr.push(userInfo);
     userInfo.unshift(userArr.length-1);
-    
-    console.log(userArr.length);
+
     console.log(userInfo);
     console.log(userArr);
     getUserChoice();
 }
 
 function getInputForUpdate(){
-    let userInfo = new Array(4);
+    //
+    console.log("Input the ID of the record you want to change:");
+    let userIdInput = prompt();
+
+  
+
+    let userInfo = new Array(3);
     for (let i = 0; i < userInfo.length; i++){
         userInfo[i] = prompt(); 
     }
-    console.log(userInfo);
+   try {
+    // replaces values inside indexes depending on
+    // the id value provided by uses
+    userArr[userIdInput].splice(
+        1, 3,
+        userInfo[0],
+        userInfo[1],
+        userInfo[2]
+        )
+    } catch (error){
+        console.log("Error! Invalid ID. No action taken.")
+    }
+    
+    console.log(userArr);
     getUserChoice();
 }
 
-getUserChoice();
+getUserChoice(); 
