@@ -57,7 +57,7 @@ function getInputForSave(){
     // length starts at 1,
     // array starts at 0 which is why
     // -1 is needed.
-    userInfo.unshift(userArr.length-1);
+    //userInfo.unshift(userArr.length-1);
 
     console.log(userInfo);
     console.log(userArr);
@@ -81,7 +81,7 @@ function getInputForUpdate(){
     // replaces values inside indexes depending on
     // the id value provided by uses
     userArr[userIdInput].splice(
-        1, 3,
+        0, 3,
         userInfo[0],
         userInfo[1],
         userInfo[2]
