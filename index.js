@@ -42,6 +42,10 @@ function getUserChoice(){
     return userChoice;
 }
 
+function displayUserArray(){
+    console.log(userArr);
+}
+
 
 function getInputForSave(){
     let userInfo = new Array(3);
@@ -59,8 +63,7 @@ function getInputForSave(){
     // -1 is needed.
     //userInfo.unshift(userArr.length-1);
 
-    console.log(userInfo);
-    console.log(userArr);
+    displayUserArray();
     getUserChoice();
 }
 
@@ -90,7 +93,7 @@ function getInputForUpdate(){
         console.log("Error! Invalid ID. No action taken.")
     }
     
-    console.log(userArr);
+    displayUserArray();
     getUserChoice();
 }
 
@@ -105,7 +108,7 @@ function getInputForDelete(){
             console.log("Error! Invalid ID. No action taken.")
         }
         
-        console.log(userArr);
+        displayUserArray();
         getUserChoice();
     
 }
