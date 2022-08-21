@@ -32,6 +32,7 @@ function getUserChoice(){
     // Delete
     else if (userChoice == 3){
         console.log(`Selected ${choiceNamesArr[userChoice]}.`);
+        getInputForDelete();
     }
     else {
         console.log("Error Input.");
@@ -69,12 +70,14 @@ function getInputForUpdate(){
     let userIdInput = prompt();
 
   
-
+    // asks for userInfo to replace the existing 
+    // values in indexes of array
     let userInfo = new Array(3);
     for (let i = 0; i < userInfo.length; i++){
         userInfo[i] = prompt(); 
     }
    try {
+       userArr
     // replaces values inside indexes depending on
     // the id value provided by uses
     userArr[userIdInput].splice(
@@ -89,6 +92,22 @@ function getInputForUpdate(){
     
     console.log(userArr);
     getUserChoice();
+}
+
+function getInputForDelete(){
+    console.log("Input the ID of the record you want to delete:");
+    let userIdInput = prompt();
+    try {
+        // replaces values inside indexes depending on
+        // the id value provided by uses
+        userArr.splice(userIdInput, 1);
+        } catch (error){
+            console.log("Error! Invalid ID. No action taken.")
+        }
+        
+        console.log(userArr);
+        getUserChoice();
+    
 }
 
 getUserChoice(); 
